@@ -1,4 +1,5 @@
 pluginManagement {
+	includeBuild("build-logic")
 	repositories {
 		google()
 		mavenCentral()
@@ -14,5 +15,15 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ComposeTMDB"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
- 
+include(":feature")
+include(":feature:favorite")
+include(":feature:home")
+include(":feature:search")
+include(":feature:setting")
+include(":core")
+include(":core:data")
+include(":core:database")
+include(":core:designsystem")
