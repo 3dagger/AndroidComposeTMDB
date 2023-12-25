@@ -22,6 +22,8 @@ room = "2.6.0"
 hilt = "2.48.1"
 hiltExt = "1.1.0"
 
+accompanistSystemuicontroller = "0.32.0"
+
 coil = "2.4.0"
 
 androidxEspresso = "3.5.1"
@@ -31,11 +33,13 @@ kotlin1910 = "1.9.10"
 junit = "1.1.5"
 appcompat = "1.6.1"
 material = "1.9.0"
+kotlin19102 = "1.9.10"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
 androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
+androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidxComposeMaterial"}
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
@@ -61,7 +65,10 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
-#hilt-ext-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hiltExt" }
+
+accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller"}
+
+
 
 coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
@@ -94,6 +101,9 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 nuyhoos-android-application = { id = "nuyhoos.android.application", version = "unspecified" }
 nuyhoos-android-application-compose = { id = "nuyhoos.android.application.compose", version = "unspecified" }
 nuyhoos-android-hilt = { id = "nuyhoos.android.hilt", version = "unspecified" }
+nuyhoos-android-feature = { id = "nuyhoos.android.feature", version = "unspecified" }
 nuyhoos-android-room = { id = "nuyhoos.android.room", version = "unspecified" }
 nuyhoos-android-library = { id = "nuyhoos.android.library", version = "unspecified" }
+nuyhoos-android-library-compose = { id = "nuyhoos.android.library.compose", version = "unspecified" }
 nuyhoos-jvm-library = { id = "nuyhoos.jvm.library", version = "unspecified" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin19102" }

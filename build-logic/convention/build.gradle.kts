@@ -37,9 +37,17 @@ gradlePlugin {
 			id = "nuyhoos.android.library"
 			implementationClass = "AndroidLibraryConventionPlugin"
 		}
+		register("androidLibraryCompose") {
+			id = "nuyhoos.android.library.compose"
+			implementationClass = "AndroidLibraryComposeConventionPlugin"
+		}
 		register("androidHilt") {
 			id = "nuyhoos.android.hilt"
 			implementationClass = "AndroidHiltConventionPlugin"
+		}
+		register("androidFeature") {
+			id = "nuyhoos.android.feature"
+			implementationClass = "AndroidFeatureConventionPlugin"
 		}
 		register("androidRoom") {
 			id = "nuyhoos.android.room"

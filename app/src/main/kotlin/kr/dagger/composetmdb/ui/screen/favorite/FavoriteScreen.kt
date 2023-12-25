@@ -1,6 +1,5 @@
 package kr.dagger.composetmdb.ui.screen.favorite
 
-import android.util.Log
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -21,8 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import kr.dagger.composetmdb.core.model.Popular
 import kr.dagger.composetmdb.data.UiState
-import kr.dagger.composetmdb.domain.model.Popular
 import kr.dagger.composetmdb.ui.component.MovieItemContent
 import kr.dagger.composetmdb.ui.component.Progress
 import kr.dagger.composetmdb.ui.templete.MainTemplate
@@ -43,7 +42,7 @@ fun FavoriteScreen(
 					.fillMaxSize()
 					.background(MaterialTheme.colorScheme.primary)
 			) {
-				viewModel.uiStateFavoriteMovie.collectAsState(initial = UiState.Loading).value.let { uiState ->
+				viewModel.uiStateFavoriteMovieEntity.collectAsState(initial = UiState.Loading).value.let { uiState ->
 					when (uiState) {
 						is UiState.Loading -> {
 							viewModel.getFavorites()

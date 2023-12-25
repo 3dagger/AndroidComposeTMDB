@@ -1,14 +1,12 @@
 package kr.dagger.composetmdb.core.database
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import kr.dagger.composetmdb.core.database.dao.FavoriteDao
-import kr.dagger.composetmdb.core.database.entity.Favorite
+import kr.dagger.composetmdb.core.database.entity.FavoriteEntity
 
 @Database(
-	entities = [Favorite::class], version = 1, exportSchema = true
+	entities = [FavoriteEntity::class], version = 1, exportSchema = true
 )
 abstract class AppDatabase : RoomDatabase() {
 

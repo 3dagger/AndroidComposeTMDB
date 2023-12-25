@@ -1,0 +1,8 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+<string name="home" tools:ignore="ExtraTranslation">home</string>
+<string name="favorite" tools:ignore="ExtraTranslation">favorite</string>
+<string name="search" tools:ignore="ExtraTranslation">search</string>
+<string name="setting" tools:ignore="ExtraTranslation">setting</string>
+    <string name="home1" tools:ignore="ExtraTranslation">aa\n</string>
+</resources>

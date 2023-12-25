@@ -19,11 +19,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import kr.dagger.composetmdb.core.designsystem.theme.Gray200
 import kr.dagger.composetmdb.data.UiState
 import kr.dagger.composetmdb.ui.component.Progress
-import kr.dagger.composetmdb.ui.theme.Gray200
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

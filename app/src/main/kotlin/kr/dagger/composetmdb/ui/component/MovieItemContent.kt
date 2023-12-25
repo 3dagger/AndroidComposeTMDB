@@ -21,7 +21,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
-import kr.dagger.composetmdb.domain.model.Popular
+import kr.dagger.composetmdb.core.model.Popular
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

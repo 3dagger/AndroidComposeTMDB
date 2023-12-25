@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import kr.dagger.composetmdb.core.domain.usecase.movie.GetMovieDetailUseCase
+import kr.dagger.composetmdb.core.model.Detail
 import kr.dagger.composetmdb.data.UiState
-import kr.dagger.composetmdb.domain.model.Detail
-import kr.dagger.composetmdb.domain.usecase.movie.GetMovieDetailUseCase
 import javax.inject.Inject
 
 @HiltViewModel

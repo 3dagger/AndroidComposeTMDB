@@ -13,18 +13,16 @@ android {
 			isReturnDefaultValues = true
 		}
 	}
-	kotlinOptions {
-		jvmTarget = "1.8"
-	}
 }
 
 dependencies {
 	implementation(projects.core.database)
+	implementation(projects.core.network)
+	implementation(projects.core.model)
 
-//	implementation(libs.androidx.core.ktx)
-//	implementation(libs.appcompat)
-//	implementation(libs.material)
-//	testImplementation(libs.junit4)
-//	androidTestImplementation(libs.junit)
-//	androidTestImplementation(libs.androidx.test.espresso.core)
+	implementation(libs.kotlinx.coroutines.android)
+	implementation(libs.androidx.paging.runtime)
+	implementation(libs.androidx.paging.compose)
+	implementation(libs.retrofit.core)
+	implementation(libs.retrofit.gson)
 }

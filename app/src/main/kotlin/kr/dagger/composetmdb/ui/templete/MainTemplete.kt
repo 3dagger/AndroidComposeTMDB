@@ -18,7 +18,7 @@ fun MainTemplate(
 	Scaffold(
 		topBar = { topBar() },
 		bottomBar = { bottomBar() },
-//		backgroundColor = MaterialTheme.colors.primary
+		containerColor = MaterialTheme.colorScheme.primary
 	) { innerPadding ->
 		Surface(
 			modifier = modifier.fillMaxSize(),
