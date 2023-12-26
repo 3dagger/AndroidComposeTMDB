@@ -1,4 +1,4 @@
-import kr.dagger.composetmdb.configureKotlinJvm
+import kr.dagger.nuyhoostmdb.configureKotlinJvm
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

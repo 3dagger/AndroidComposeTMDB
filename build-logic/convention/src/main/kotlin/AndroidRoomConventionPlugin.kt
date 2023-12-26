@@ -1,5 +1,5 @@
 import com.google.devtools.ksp.gradle.KspExtension
-import kr.dagger.composetmdb.libs
+import kr.dagger.nuyhoostmdb.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.InputDirectory

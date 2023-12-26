@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-	namespace = "kr.dagger.composetmdb.core.model"
+	namespace = "kr.dagger.nuyhoostmdb.core.model"
 }
 
 dependencies {

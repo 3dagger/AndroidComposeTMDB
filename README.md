@@ -1,2 +1,2 @@
-# AndroidComposeTMDB
+# Androidnuyhoostmdb
 TMDB compose demo project

@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-	namespace = "kr.dagger.composetmdb.core.data"
+	namespace = "kr.dagger.nuyhoostmdb.core.data"
 
 	testOptions {
 		unitTests {

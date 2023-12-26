@@ -12,10 +12,10 @@ fun getLocalProperties(propName: String): String {
 }
 
 android {
-	namespace = "kr.dagger.composetmdb"
+	namespace = "kr.dagger.nuyhoostmdb"
 
 	defaultConfig {
-		applicationId = "kr.dagger.composetmdb"
+		applicationId = "kr.dagger.nuyhoostmdb"
 		versionCode = 1
 		versionName = "1.0"
 
@@ -50,11 +50,12 @@ dependencies {
 	implementation(projects.core.model)
 	implementation(projects.core.domain)
 	implementation(projects.core.designsystem)
+	implementation(projects.core.ui)
 
 	implementation(projects.feature.home)
-//	implementation(projects.feature.favorite)
-//	implementation(projects.feature.search)
-//	implementation(projects.feature.setting)
+	implementation(projects.feature.favorite)
+	implementation(projects.feature.search)
+	implementation(projects.feature.setting)
 
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.activity.compose)

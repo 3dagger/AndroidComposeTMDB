@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-	namespace = "kr.dagger.composetmdb.core.network"
+	namespace = "kr.dagger.nuyhoostmdb.core.network"
 
 	buildFeatures {
 		buildConfig = true

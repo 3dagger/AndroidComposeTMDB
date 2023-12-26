@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ComposeTMDB</string>
+    <string name="app_name">nuyhoostmdb</string>
     <string name="home">home</string>
     <string name="favorite">favorite</string>
     <string name="search">search</string>

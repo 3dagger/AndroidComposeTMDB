@@ -1,4 +1,4 @@
-import kr.dagger.composetmdb.libs
+import kr.dagger.nuyhoostmdb.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies

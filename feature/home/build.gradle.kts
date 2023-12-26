@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-	namespace = "kr.dagger.composetmdb.feature.home"
+	namespace = "kr.dagger.nuyhoostmdb.feature.home"
 }
 
 dependencies {

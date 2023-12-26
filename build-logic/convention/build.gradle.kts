@@ -4,7 +4,7 @@ plugins {
 	`kotlin-dsl`
 }
 
-group = "kr.dagger.composetmdb.buildlogic"
+group = "kr.dagger.nuyhoostmdb.buildlogic"
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_17

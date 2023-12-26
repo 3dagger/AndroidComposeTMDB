@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-	namespace = "kr.dagger.composetmdb.core.database"
+	namespace = "kr.dagger.nuyhoostmdb.core.database"
 
 	defaultConfig {
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

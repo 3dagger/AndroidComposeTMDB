@@ -14,7 +14,7 @@ dependencyResolutionManagement {
 	}
 }
 
-rootProject.name = "ComposeTMDB"
+rootProject.name = "NuyhoosTMDB"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
