@@ -14,23 +14,24 @@ import kr.dagger.nuyhoostmdb.feature.favorite.FavoriteScreen
 import kr.dagger.nuyhoostmdb.feature.home.HomeScreen
 import kr.dagger.nuyhoostmdb.feature.search.SearchScreen
 import kr.dagger.nuyhoostmdb.feature.setting.SettingScreen
+import kr.dagger.nuyhoostmdb.movie.MovieDetailScreen
 import kr.dagger.nuyhoostmdb.navigation.model.BottomBarScreen
 import kr.dagger.nuyhoostmdb.navigation.model.GeneralScreen
-import kr.dagger.nuyhoostmdb.ui.screen.detail.DetailScreen
 
 @Composable
 fun MainNavHost(
 	navController: NavHostController,
+	modifier: Modifier = Modifier,
 	innerPadding: PaddingValues
 ) {
 	NavHost(
 		navController = navController,
 		startDestination = BottomBarScreen.Home.route,
-		modifier = Modifier.padding(innerPadding)
+		modifier = modifier.padding(innerPadding)
 	) {
 		composable(BottomBarScreen.Home.route) {
 			HomeScreen(
-				modifier = Modifier.fillMaxSize(),
+				modifier = modifier.fillMaxSize(),
 				navigateToDetail = { id ->
 					navController.navigate(GeneralScreen.DetailMovie.createRoute(id))
 				}
@@ -39,8 +40,9 @@ fun MainNavHost(
 
 		composable(BottomBarScreen.Favorite.route) {
 			FavoriteScreen(
-				modifier = Modifier.fillMaxSize(),
-				onAddFavoriteMovie = { }) {
+				modifier = modifier.fillMaxSize(),
+				onAddFavoriteMovie = { },
+			) {
 			}
 		}
 
@@ -49,7 +51,8 @@ fun MainNavHost(
 			arguments = listOf(navArgument("id") { type = NavType.IntType })
 		) {
 			val id = it.arguments?.getInt("id") ?: -1
-			DetailScreen(
+			MovieDetailScreen(
+				modifier = modifier.fillMaxSize(),
 				id = id,
 				navigateBack = {
 					navController.navigateUp()
@@ -57,17 +60,15 @@ fun MainNavHost(
 			)
 		}
 
-		composable(
-			route = BottomBarScreen.Search.route
-		) {
+		composable(BottomBarScreen.Search.route) {
 			SearchScreen(
-				modifier = Modifier.fillMaxSize(),
+				modifier = modifier.fillMaxSize(),
 			) {}
 		}
 
 		composable(BottomBarScreen.Setting.route) {
 			SettingScreen(
-				modifier = Modifier.fillMaxSize()
+				modifier = modifier.fillMaxSize()
 			) {}
 		}
 	}

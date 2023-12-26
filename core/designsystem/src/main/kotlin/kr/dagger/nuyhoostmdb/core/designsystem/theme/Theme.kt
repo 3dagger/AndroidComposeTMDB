@@ -1,20 +1,11 @@
 package kr.dagger.nuyhoostmdb.core.designsystem.theme
 
-import android.app.Activity
-import android.os.Build
 import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
 	primary = Purple80,
@@ -55,13 +46,10 @@ private val LightColorPalette = lightColorScheme(
 )
 
 @Composable
-fun nuyhoostmdbTheme(
+fun NuyhoosTmdbTheme(
 	darkTheme: Boolean = isSystemInDarkTheme(),
 	content: @Composable () -> Unit
 ) {
-
-	Log.d("leeam", "isDarkTheme : $darkTheme")
-
 	val colors = if (darkTheme) {
 		DarkColorPalette
 	} else {

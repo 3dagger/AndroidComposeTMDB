@@ -1,5 +1,6 @@
-package kr.dagger.nuyhoostmdb.ui.screen.detail
+package kr.dagger.nuyhoostmdb.movie
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -9,22 +10,22 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetMovieDetailUseCase
 import kr.dagger.nuyhoostmdb.core.model.Detail
-import kr.dagger.nuyhoostmdb.data.UiState
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(
+class MovieDetailViewModel @Inject constructor(
 	private val getMovieDetailUseCase: GetMovieDetailUseCase
 ) : ViewModel() {
-	private val _uiStateDetailMovie: MutableStateFlow<UiState<Detail>> = MutableStateFlow(UiState.Loading)
-	val uiStateDetailMovie: StateFlow<UiState<Detail>> = _uiStateDetailMovie
+	private val _uiStateDetailMovie: MutableStateFlow<MovieUiState<Detail>> = MutableStateFlow(MovieUiState.Loading)
+	val uiStateDetailMovie: StateFlow<MovieUiState<Detail>> = _uiStateDetailMovie
 
 	fun getMovieDetail(id: Int) {
 		viewModelScope.launch {
 			getMovieDetailUseCase.execute(params = id).catch {
-				_uiStateDetailMovie.value = UiState.Error(it.message.toString())
+				_uiStateDetailMovie.value = MovieUiState.Error(it.message.toString())
 			}.collect { movie ->
-				_uiStateDetailMovie.value = UiState.Success(movie)
+				Log.d("leeam", "movie : $movie")
+				_uiStateDetailMovie.value = MovieUiState.Success(movie)
 			}
 		}
 	}

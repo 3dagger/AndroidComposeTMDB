@@ -12,21 +12,21 @@ sealed class BottomBarScreen(
 		iconFocused = R.drawable.round_home_24
 	)
 
-	object Favorite: BottomBar(
+	data object Favorite: BottomBar(
 		route = "favorite",
 		titleResId = R.string.favorite,
 		icon = R.drawable.round_favorite_24,
 		iconFocused = R.drawable.round_favorite_24
 	)
 
-	object Search: BottomBar(
+	data object Search: BottomBar(
 		route = "Search",
 		titleResId = R.string.search,
 		icon = R.drawable.round_search_24,
 		iconFocused = R.drawable.round_search_24
 	)
 
-	object Setting: BottomBar(
+	data object Setting: BottomBar(
 		route = "setting",
 		titleResId = R.string.setting,
 		icon = R.drawable.round_settings_24,

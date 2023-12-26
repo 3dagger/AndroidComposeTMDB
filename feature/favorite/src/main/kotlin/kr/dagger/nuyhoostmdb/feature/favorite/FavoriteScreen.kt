@@ -38,7 +38,7 @@ fun FavoriteScreen(
 			Box(
 				modifier = Modifier
 					.fillMaxSize()
-					.background(MaterialTheme.colorScheme.primary)
+					.background(MaterialTheme.colorScheme.background)
 			) {
 				viewModel.uiStateFavoriteMovieEntity.collectAsState(initial = FavoriteUiState.Loading).value.let { uiState ->
 					when (uiState) {

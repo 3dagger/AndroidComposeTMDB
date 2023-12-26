@@ -59,10 +59,14 @@ fun FavoriteButton(
 
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun FavoriteButtonPreview() {
-//	FavoriteButton{
-//
-//	}
+	FavoriteButton(isFavorite = true, isFavoriteScreen = true, onFavoriteClick = { })
+}
+
+@Preview(showBackground = true)
+@Composable
+fun FavoriteButtonFalsePreview() {
+	FavoriteButton(isFavorite = false, isFavoriteScreen = false, onFavoriteClick = { })
 }

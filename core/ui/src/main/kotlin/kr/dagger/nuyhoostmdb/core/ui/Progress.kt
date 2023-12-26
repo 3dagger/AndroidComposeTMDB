@@ -18,7 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kr.dagger.nuyhoostmdb.core.designsystem.theme.nuyhoostmdbTheme
+import kr.dagger.nuyhoostmdb.core.designsystem.theme.NuyhoosTmdbTheme
 
 @Composable
 fun Progress() {
@@ -56,7 +56,7 @@ annotation class ThemePreviews
 @ThemePreviews
 @Composable
 fun ProgressPreview() {
-	nuyhoostmdbTheme {
+	NuyhoosTmdbTheme {
 		Progress()
 	}
 }

@@ -22,11 +22,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import kr.dagger.nuyhoostmdb.core.designsystem.component.NuyhoosTopAppBAr
-import kr.dagger.nuyhoostmdb.core.designsystem.icon.NuyhoosIcons
 import kr.dagger.nuyhoostmdb.core.model.Favorite
 import kr.dagger.nuyhoostmdb.core.model.Popular
-import kr.dagger.nuyhoostmdb.core.ui.MainTemplate
 import kr.dagger.nuyhoostmdb.core.ui.Progress
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,60 +33,72 @@ fun HomeScreen(
 	viewModel: HomeViewModel = hiltViewModel(),
 	navigateToDetail: (Int) -> Unit,
 ) {
-	MainTemplate(
-		modifier = modifier,
-		topBar = {
-			 NuyhoosTopAppBAr(
-				 titleRes = R.string.test,
-				 navigationIcon = NuyhoosIcons.Search,
-				 navigationIconContentDescription = "",
-				 actionIcon = NuyhoosIcons.MoreVert,
-				 actionIconContentDescription = "",
-				 onActionClick = {},
-				 onNavigationClick = {},
-			 )
-//			TopAppBar(
-//				backgroundColor = MaterialTheme.colors.primary,
-//				contentColor = MaterialTheme.colors.primary,
-//				elevation = 0.dp
-//			) {
-//				Text(
-//					text = "TMDB",
-//					style = MaterialTheme.typography.bodyMedium,
-//					color = Color.White,
-//					textAlign = TextAlign.Center,
-//					maxLines = 1,
-//					overflow = TextOverflow.Ellipsis,
-//					modifier = Modifier
-//						.weight(1F)
-//						.align(Alignment.CenterVertically)
-//				)
-//			}
-		},
-		content = {
-			Box(
-				modifier = Modifier
-					.fillMaxSize()
-					.background(MaterialTheme.colorScheme.primary)
-			) {
-				viewModel.popularPagingDataFlow.collectAsLazyPagingItems().let {
-					when (it.loadState.refresh) {
-						is LoadState.Loading -> {
-							Log.d("leeam", "loading")
-							Progress()
-						}
-						is LoadState.Error -> {
-							val message = (it.loadState.refresh as? LoadState.Error)?.error?.message ?: return@let
-							Text(text = message, color = Color.White)
-						}
-						else -> {
-							MovieItemContent(movies = it, viewModel = viewModel, navigateToDetail = navigateToDetail)
-						}
-					}
+	Box(
+		modifier = modifier
+			.fillMaxSize()
+			.background(MaterialTheme.colorScheme.background)
+	) {
+		viewModel.popularPagingDataFlow.collectAsLazyPagingItems().let {
+			when (it.loadState.refresh) {
+				is LoadState.Loading -> {
+					Log.d("leeam", "loading")
+					Progress()
+				}
+
+				is LoadState.Error -> {
+					val message =
+						(it.loadState.refresh as? LoadState.Error)?.error?.message ?: return@let
+					Text(text = message, color = Color.White)
+				}
+
+				else -> {
+					MovieItemContent(
+						movies = it,
+						viewModel = viewModel,
+						navigateToDetail = navigateToDetail
+					)
 				}
 			}
 		}
-	)
+	}
+
+//	MainTemplate(
+//		modifier = modifier,
+//		topBar = {
+//			 NuyhoosTopAppBAr(
+//				 titleRes = R.string.test,
+//				 navigationIcon = NuyhoosIcons.Search,
+//				 navigationIconContentDescription = "",
+//				 actionIcon = NuyhoosIcons.MoreVert,
+//				 actionIconContentDescription = "",
+//				 onActionClick = {},
+//				 onNavigationClick = {},
+//			 )
+//		},
+//		content = {
+//			Box(
+//				modifier = Modifier
+//					.fillMaxSize()
+//					.background(MaterialTheme.colorScheme.background)
+//			) {
+//				viewModel.popularPagingDataFlow.collectAsLazyPagingItems().let {
+//					when (it.loadState.refresh) {
+//						is LoadState.Loading -> {
+//							Log.d("leeam", "loading")
+//							Progress()
+//						}
+//						is LoadState.Error -> {
+//							val message = (it.loadState.refresh as? LoadState.Error)?.error?.message ?: return@let
+//							Text(text = message, color = Color.White)
+//						}
+//						else -> {
+//							MovieItemContent(movies = it, viewModel = viewModel, navigateToDetail = navigateToDetail)
+//						}
+//					}
+//				}
+//			}
+//		}
+//	)
 }
 
 @OptIn(ExperimentalFoundationApi::class)

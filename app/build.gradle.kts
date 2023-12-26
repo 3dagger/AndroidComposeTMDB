@@ -56,6 +56,7 @@ dependencies {
 	implementation(projects.feature.favorite)
 	implementation(projects.feature.search)
 	implementation(projects.feature.setting)
+	implementation(projects.feature.movie)
 
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.activity.compose)
