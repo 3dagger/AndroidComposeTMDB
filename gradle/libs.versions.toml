@@ -13,18 +13,18 @@ androidxComposeCompiler = "1.5.3"
 ksp = "1.9.10-1.0.13"
 kotlin = "1.9.10"
 
+hilt = "2.48.1"
+hiltExt = "1.1.0"
+
 kotlinxCoroutines = "1.7.2"
 retrofit = "2.9.0"
 okhttp = "4.12.0"
-#room = "2.4.3"
 room = "2.6.0"
-
-hilt = "2.48.1"
-hiltExt = "1.1.0"
 
 accompanistSystemuicontroller = "0.32.0"
 
 coil = "2.4.0"
+logger = "2.2.0"
 
 androidxEspresso = "3.5.1"
 androidxTestExt = "1.1.5"
@@ -70,11 +70,11 @@ hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.r
 
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller"}
 
-
-
 coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 coil-kt-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil" }
+
+logger = { group = "com.orhanobut", name = "logger", version.ref = "logger" }
 
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }

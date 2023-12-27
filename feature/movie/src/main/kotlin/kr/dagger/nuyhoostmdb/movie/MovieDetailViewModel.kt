@@ -1,6 +1,5 @@
 package kr.dagger.nuyhoostmdb.movie
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,7 +23,6 @@ class MovieDetailViewModel @Inject constructor(
 			getMovieDetailUseCase.execute(params = id).catch {
 				_uiStateDetailMovie.value = MovieUiState.Error(it.message.toString())
 			}.collect { movie ->
-				Log.d("leeam", "movie : $movie")
 				_uiStateDetailMovie.value = MovieUiState.Success(movie)
 			}
 		}

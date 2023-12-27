@@ -83,4 +83,5 @@ dependencies {
 	implementation(libs.coil.kt.svg)
 
 	implementation(libs.accompanist.systemuicontroller)
+	implementation(libs.logger)
 }

@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kr.dagger.nuyhoostmdb.core.designsystem.theme.NuyhoosTmdbTheme
+import kr.dagger.nuyhoostmdb.core.designsystem.theme.NuyhoosTheme
 import kr.dagger.nuyhoostmdb.core.designsystem.theme.StatusBarColor
 import kr.dagger.nuyhoostmdb.ui.NuyhoosApp
 
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
 		super.onCreate(savedInstanceState)
 
 		setContent {
-			NuyhoosTmdbTheme{
+			NuyhoosTheme{
 				StatusBarColor(
 					color = MaterialTheme.colorScheme.background,
 					isDarkIcons = !isSystemInDarkTheme(),
