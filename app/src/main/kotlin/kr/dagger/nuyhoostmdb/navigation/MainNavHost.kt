@@ -11,7 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import kr.dagger.nuyhoostmdb.feature.favorite.FavoriteScreen
-import kr.dagger.nuyhoostmdb.feature.home.HomeScreen
+import kr.dagger.nuyhoostmdb.feature.home.HomeRoute
 import kr.dagger.nuyhoostmdb.feature.search.SearchScreen
 import kr.dagger.nuyhoostmdb.feature.setting.SettingScreen
 import kr.dagger.nuyhoostmdb.movie.MovieDetailScreen
@@ -30,7 +30,7 @@ fun MainNavHost(
 		modifier = modifier.padding(innerPadding)
 	) {
 		composable(BottomBarScreen.Home.route) {
-			HomeScreen(
+			HomeRoute(
 				modifier = modifier.fillMaxSize(),
 				navigateToDetail = { id ->
 					navController.navigate(GeneralScreen.DetailMovie.createRoute(id))

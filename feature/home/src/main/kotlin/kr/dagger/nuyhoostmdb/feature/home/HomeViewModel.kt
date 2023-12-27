@@ -3,109 +3,55 @@ package kr.dagger.nuyhoostmdb.feature.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import androidx.paging.map
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import kr.dagger.nuyhoostmdb.core.domain.usecase.favorite.DeleteFavoriteMovieUseCase
-import kr.dagger.nuyhoostmdb.core.domain.usecase.favorite.GetFavo
-import kr.dagger.nuyhoostmdb.core.domain.usecase.favorite.GetFavoriteMoviesUseCase
-import kr.dagger.nuyhoostmdb.core.domain.usecase.favorite.InsertFavoriteMovieUseCase
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.stateIn
+import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetNowPlayingMoviesUseCase
 import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetPopularMoviePagingUseCase
-import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetPopularMovieUseCase
-import kr.dagger.nuyhoostmdb.core.model.Favorite
+import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetUpComingMoviesUseCase
 import kr.dagger.nuyhoostmdb.core.model.Popular
+import kr.dagger.nuyhoostmdb.core.model.UpComing
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-	private val getPopularMovieUseCase: GetPopularMovieUseCase,
-	private val insertFavoriteMovieUseCase: InsertFavoriteMovieUseCase,
-	private val deleteFavoriteMovieUseCase: DeleteFavoriteMovieUseCase,
-	private val getFavoriteMoviesUseCase: GetFavoriteMoviesUseCase,
-	private val getPopularMoviePagingUseCase: GetPopularMoviePagingUseCase,
-	private val getFavo: GetFavo
+	getPopularMoviePagingUseCase: GetPopularMoviePagingUseCase,
+	getUpComingMoviesUseCase: GetUpComingMoviesUseCase,
+	private val getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase
 ) : ViewModel() {
-	private val _uiStatePopularMovie: MutableStateFlow<HomeUiState<MutableList<Popular>>> =
-		MutableStateFlow(HomeUiState.Loading)
-	//	val popularPagingDataFlow: Flow<PagingData<Popular>> = getPopularMoviePagingUseCase.execute(Unit).cachedIn(viewModelScope)
 
 
-	val popularPagingDataFlow: Flow<PagingData<Popular>> = getPopularMoviePagingUseCase.execute(Unit)
-		.map { pagingData ->
-			pagingData.map { popular ->
-				if (popular.id in getFavorites().map { it.id }.toSet()) {
-					popular.isFavorite = true
-				}
-				popular
-			}.also {
-//				Logger.d("res :: $it")
-			}
-		}
-		.cachedIn(viewModelScope)
-
-//	private suspend fun getFavorites(): Flow<List<Favorite>> {
-//		return withContext(Dispatchers.IO) {
-//			getFavoriteMoviesUseCase.execute(Unit)
-//		}
-//	}
+	val upComingStateFlow: StateFlow<UpComingUiState> =
+		getUpComingMoviesUseCase.execute(Unit)
+			.map<List<UpComing>, UpComingUiState>(UpComingUiState::Success)
+			.onStart { emit(UpComingUiState.Loading) }
+			.stateIn(
+				scope = viewModelScope,
+				started = SharingStarted.WhileSubscribed(5_000),
+				initialValue = UpComingUiState.Loading
+			)
 
 
-	private suspend fun getFavorites(): List<Favorite> {
-		return withContext(Dispatchers.IO) {
-			getFavo.execute(Unit)
-		}
-	}
+
+	val popularPagingDataFlow: Flow<PagingData<Popular>> =
+		getPopularMoviePagingUseCase.execute(Unit)
+			.cachedIn(viewModelScope)
+}
 
 
-//	private fun getPopularMovies(favorite: List<Favorite>) {
-//		viewModelScope.launch {
-//			getPopularMovieUseCase.execute(Unit).catch {
-//				_uiStatePopularMovie.value = UiState.Error(it.message.toString())
-//			}.collect { movie ->
-//				_uiStatePopularMovie.value = if (favorite.isEmpty()) {
-//					UiState.Success(movie.toMutableList())
-//				} else {
-//					val list = movie.map { popular ->
-//						if (popular.id in favorite.map { it.id }.toSet()) {
-//							popular.isFavorite = true
-//						}
-//						popular
-//					}
-//					UiState.Success(list.toMutableList())
-//				}
-//			}
-//		}
-//	}
-//
-//	fun getFavoriteMovies() {
-//		viewModelScope.launch {
-//			getFavoriteMoviesUseCase.execute(Unit).catch {
-//				_uiStatePopularMovie.value = UiState.Error(it.message.toString())
-//			}.collect {
-//				getPopularMovies(it)
-//			}
-//		}
-//	}
+sealed interface UpComingUiState {
+	data object Loading : UpComingUiState
 
-	fun insertFavoriteMovie(favorite: Favorite) {
-		viewModelScope.launch {
-			withContext(Dispatchers.IO) {
-				insertFavoriteMovieUseCase.execute(favorite)
-			}
-		}
-	}
+	data class Fail(
+		val errorMessage: String
+	) : UpComingUiState
 
-	fun deleteFavoriteMovie(id: Long) {
-		viewModelScope.launch {
-			withContext(Dispatchers.IO) {
-				deleteFavoriteMovieUseCase.execute(id)
-			}
-		}
-	}
+	data class Success(
+		val movie: List<UpComing>,
+	) : UpComingUiState
 }
