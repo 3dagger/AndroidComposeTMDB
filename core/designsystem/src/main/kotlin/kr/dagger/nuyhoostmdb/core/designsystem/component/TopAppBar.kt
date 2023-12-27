@@ -3,7 +3,6 @@ package kr.dagger.nuyhoostmdb.core.designsystem.component
 import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import androidx.annotation.StringRes
-import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -16,36 +15,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import kr.dagger.nuyhoostmdb.core.designsystem.icon.NuyhoosIcons
-import kr.dagger.nuyhoostmdb.core.designsystem.theme.NuyhoosTmdbTheme
+import kr.dagger.nuyhoostmdb.core.designsystem.theme.NuyhoosTheme
+import kr.dagger.nuyhoostmdb.core.designsystem.theme.ThemePreviews
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NuyhoosTopAppBar(
 	@StringRes titleRes: Int,
-//	navigationIcon: ImageVector,
-//	navigationIconContentDescription: String?,
 	actionIcon: ImageVector,
 	actionIconContentDescription: String?,
 	modifier: Modifier = Modifier,
 	colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
-	onNavigationClick: () -> Unit = {},
 	onActionClick: () -> Unit = {},
 ) {
 	TopAppBar(
 		title = { Text(text = stringResource(id = titleRes), fontWeight = FontWeight.Bold) },
-//		navigationIcon = {
-//			IconButton(onClick = onNavigationClick) {
-//				Icon(
-//					imageVector = navigationIcon,
-//					contentDescription = navigationIconContentDescription,
-//					tint = MaterialTheme.colorScheme.onSurface
-//				)
-//			}
-//		},
 		actions = {
 			IconButton(onClick = onActionClick) {
 				Icon(
@@ -61,33 +48,12 @@ fun NuyhoosTopAppBar(
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview(
-	uiMode = Configuration.UI_MODE_NIGHT_YES, name = "Dark theme", showBackground = true
-)
+@ThemePreviews
 @Composable
-fun NuyhoosAppBarDarkPreview() {
-	NuyhoosTmdbTheme {
+fun NuyhoosTopAppBarPreview() {
+	NuyhoosTheme {
 		NuyhoosTopAppBar(
 			titleRes = android.R.string.untitled,
-//			navigationIcon = NuyhoosIcons.Search,
-//			navigationIconContentDescription = "Navigation icon",
-			actionIcon = NuyhoosIcons.MoreVert,
-			actionIconContentDescription = "Action icon",
-		)
-	}
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Preview(
-	uiMode = UI_MODE_NIGHT_NO, name = "Light theme", showBackground = true
-)
-@Composable
-fun NuyhoosAppBarLightPreview() {
-	NuyhoosTmdbTheme {
-		NuyhoosTopAppBar(
-			titleRes = android.R.string.untitled,
-//			navigationIcon = NuyhoosIcons.Search,
-//			navigationIconContentDescription = "Navigation icon",
 			actionIcon = NuyhoosIcons.MoreVert,
 			actionIconContentDescription = "Action icon",
 		)

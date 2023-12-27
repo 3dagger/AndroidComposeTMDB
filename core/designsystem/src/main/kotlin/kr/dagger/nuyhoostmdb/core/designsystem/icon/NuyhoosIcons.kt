@@ -1,6 +1,7 @@
 package kr.dagger.nuyhoostmdb.core.designsystem.icon
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.Bookmarks
 import androidx.compose.material.icons.outlined.Upcoming
@@ -11,6 +12,8 @@ import androidx.compose.material.icons.rounded.BookmarkBorder
 import androidx.compose.material.icons.rounded.Bookmarks
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.FavoriteBorder
 import androidx.compose.material.icons.rounded.Grid3x3
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Search
@@ -38,4 +41,6 @@ object NuyhoosIcons {
 	val Upcoming = Icons.Rounded.Upcoming
 	val UpcomingBorder = Icons.Outlined.Upcoming
 	val ViewDay = Icons.Rounded.ViewDay
+	val Favorite = Icons.Rounded.Favorite
+	val FavoriteBorder = Icons.Rounded.FavoriteBorder
 }

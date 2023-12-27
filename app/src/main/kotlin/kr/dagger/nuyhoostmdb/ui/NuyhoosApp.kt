@@ -53,7 +53,6 @@ fun NuyhoosApp(
 					actionIcon = NuyhoosIcons.MoreVert,
 					actionIconContentDescription = "",
 					onActionClick = {},
-					onNavigationClick = {},
 				)
 			}
 

@@ -26,7 +26,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import kr.dagger.nuyhoostmdb.core.designsystem.theme.NuyhoosTmdbTheme
+import kr.dagger.nuyhoostmdb.core.designsystem.theme.NuyhoosTheme
 import kr.dagger.nuyhoostmdb.navigation.model.BottomBar
 import kr.dagger.nuyhoostmdb.navigation.model.BottomBarScreen
 
@@ -83,7 +83,7 @@ fun BottomNavigationItemDarkPreview() {
 	val ctx = LocalContext.current
 	val navController = NavHostController(ctx)
 
-	NuyhoosTmdbTheme {
+	NuyhoosTheme {
 		BottomNavigationItem(
 			screen = BottomBarScreen.Home,
 			currentDestination = NavDestination(""),
@@ -98,7 +98,7 @@ fun BottomNavigationItemLightPreview() {
 	val ctx = LocalContext.current
 	val navController = NavHostController(ctx)
 
-	NuyhoosTmdbTheme {
+	NuyhoosTheme {
 		BottomNavigationItem(
 			screen = BottomBarScreen.Home,
 			currentDestination = NavDestination(""),

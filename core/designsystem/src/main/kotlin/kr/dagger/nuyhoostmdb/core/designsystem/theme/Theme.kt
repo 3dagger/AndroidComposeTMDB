@@ -1,11 +1,12 @@
 package kr.dagger.nuyhoostmdb.core.designsystem.theme
 
-import android.util.Log
+import android.content.res.Configuration
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 
 private val DarkColorScheme = darkColorScheme(
 	primary = Purple80,
@@ -46,7 +47,7 @@ private val LightColorPalette = lightColorScheme(
 )
 
 @Composable
-fun NuyhoosTmdbTheme(
+fun NuyhoosTheme(
 	darkTheme: Boolean = isSystemInDarkTheme(),
 	content: @Composable () -> Unit
 ) {

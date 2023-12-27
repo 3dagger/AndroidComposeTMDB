@@ -50,7 +50,6 @@ fun FavoriteScreen(
 							when (uiState.data.isEmpty()) {
 								true -> EmptyFavorite(modifier = modifier)
 								false -> {
-//									Log.d("leeam", "in? :: ${uiState.data}")
 									FavoriteItemContent(
 										movies = uiState.data.map {
 											Popular(id = it.id, title = it.title, posterPath = it.posterPath, overView = it.overView)
