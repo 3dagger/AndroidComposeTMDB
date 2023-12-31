@@ -5,7 +5,7 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import kr.dagger.nuyhoostmdb.core.database.AppDatabase
-import kr.dagger.nuyhoostmdb.core.model.Popular
+import kr.dagger.nuyhoostmdb.core.model.Movie
 import kr.dagger.nuyhoostmdb.core.network.service.MovieService
 import javax.inject.Inject
 
@@ -13,7 +13,7 @@ import javax.inject.Inject
 class PopularMovieRemoteMediator @Inject constructor(
 	private val movieService: MovieService,
 	private val appDatabase: AppDatabase
-) : RemoteMediator<Int, Popular>() {
+) : RemoteMediator<Int, Movie>() {
 
 	override suspend fun initialize(): InitializeAction {
 		return InitializeAction.SKIP_INITIAL_REFRESH
@@ -33,7 +33,7 @@ class PopularMovieRemoteMediator @Inject constructor(
 
 	override suspend fun load(
 		loadType: LoadType,
-		state: PagingState<Int, Popular>
+		state: PagingState<Int, Movie>
 	): MediatorResult {
 		try {
 //			val page = when (loadType) {

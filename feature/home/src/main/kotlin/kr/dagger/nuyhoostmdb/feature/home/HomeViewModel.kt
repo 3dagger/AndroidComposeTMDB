@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.stateIn
 import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetNowPlayingMoviesUseCase
 import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetPopularMoviePagingUseCase
 import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetUpComingMoviesUseCase
-import kr.dagger.nuyhoostmdb.core.model.Popular
+import kr.dagger.nuyhoostmdb.core.model.Movie
 import kr.dagger.nuyhoostmdb.core.model.UpComing
 import javax.inject.Inject
 
@@ -38,7 +38,7 @@ class HomeViewModel @Inject constructor(
 
 
 
-	val popularPagingDataFlow: Flow<PagingData<Popular>> =
+	val popularPagingDataFlow: Flow<PagingData<Movie>> =
 		getPopularMoviePagingUseCase.execute(Unit)
 			.cachedIn(viewModelScope)
 }

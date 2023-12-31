@@ -19,7 +19,7 @@ rootProject.name = "NuyhoosTMDB"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 include(":feature")
-include(":feature:favorite")
+include(":feature:bookmark")
 include(":feature:home")
 include(":feature:search")
 include(":feature:setting")

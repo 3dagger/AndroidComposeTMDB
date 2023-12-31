@@ -53,7 +53,7 @@ dependencies {
 	implementation(projects.core.ui)
 
 	implementation(projects.feature.home)
-	implementation(projects.feature.favorite)
+	implementation(projects.feature.bookmark)
 	implementation(projects.feature.search)
 	implementation(projects.feature.setting)
 	implementation(projects.feature.movie)

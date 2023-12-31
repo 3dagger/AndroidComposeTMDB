@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-	namespace = "kr.dagger.nuyhoostmdb.feature.favorite"
+	namespace = "kr.dagger.nuyhoostmdb.feature.bookmark"
 }
 
 dependencies {

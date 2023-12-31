@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">nuyhoostmdb</string>
+    <string name="app_name">NuyhoosTMDB</string>
     <string name="home">Home</string>
-    <string name="favorite">Favorite</string>
+    <string name="bookmark">Bookmark</string>
     <string name="search">Search</string>
     <string name="setting">Setting</string>
 </resources>

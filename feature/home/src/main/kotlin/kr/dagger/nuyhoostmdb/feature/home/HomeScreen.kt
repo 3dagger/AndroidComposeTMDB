@@ -4,12 +4,11 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -19,17 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.orhanobut.logger.Logger
 import kr.dagger.nuyhoostmdb.core.model.Movie
-import kr.dagger.nuyhoostmdb.core.model.Popular
 import kr.dagger.nuyhoostmdb.core.model.UpComing
 import kr.dagger.nuyhoostmdb.core.ui.Progress
 
@@ -53,7 +48,7 @@ fun HomeRoute(
 internal fun HomeScreen(
 	upComingState: UpComingUiState,
 	modifier: Modifier = Modifier,
-	pagingItems: LazyPagingItems<Popular>,
+	pagingItems: LazyPagingItems<Movie>,
 	navigateToDetail: (Int) -> Unit,
 ) {
 	Box(
@@ -61,87 +56,24 @@ internal fun HomeScreen(
 			.fillMaxSize()
 			.background(MaterialTheme.colorScheme.background)
 	) {
-		LazyColumn(
-//			modifier = Modifier.fillMaxSize()
-		) {
-			item {
-				Text(text = "UpComing", style = TextStyle(fontSize = 20.sp))
-			}
-
-			item {
-				when (upComingState) {
-					UpComingUiState.Loading -> {
-						Logger.d("loading")
+		Column {
+			pagingItems.let {
+				when (it.loadState.refresh) {
+					is LoadState.Loading -> Progress()
+					is LoadState.Error -> {
+						val message =
+							(it.loadState.refresh as? LoadState.Error)?.error?.message ?: return@let
+						Text(text = message, color = Color.White)
 					}
-
-					is UpComingUiState.Fail -> {
-						Logger.d("error : ${upComingState.errorMessage}")
-					}
-
-					is UpComingUiState.Success -> {
-						Logger.d("success : ${upComingState.movie}")
-						UpComingMovieItemContent(
-							items = upComingState.movie,
+					else -> {
+						PopularMovieItemContent(
+							items = it,
 							navigateToDetail = navigateToDetail
 						)
 					}
 				}
 			}
-
-			item {
-				pagingItems.let {
-					when (it.loadState.refresh) {
-						is LoadState.Loading -> Progress()
-						is LoadState.Error -> {
-							val message =
-								(it.loadState.refresh as? LoadState.Error)?.error?.message
-									?: return@let
-							Text(text = message, color = Color.White)
-						}
-
-						else -> {
-							PopularMovieItemContent(
-								items = it,
-								navigateToDetail = navigateToDetail
-							)
-						}
-					}
-				}
-			}
 		}
-
-//		Column {
-//			Text(text = "UpComing", style = TextStyle(fontSize = 20.sp))
-//
-//			when (upComingState) {
-//				UpComingUiState.Loading -> { Logger.d("loading")}
-//				is UpComingUiState.Fail -> { Logger.d("error : ${upComingState.errorMessage}") }
-//				is UpComingUiState.Success -> {
-//					Logger.d("success : ${upComingState.movie}")
-//					UpComingMovieItemContent(
-//						items = upComingState.movie,
-//						navigateToDetail = navigateToDetail
-//					)
-//				}
-//			}
-//
-//			pagingItems.let {
-//				when (it.loadState.refresh) {
-//					is LoadState.Loading -> Progress()
-//					is LoadState.Error -> {
-//						val message =
-//							(it.loadState.refresh as? LoadState.Error)?.error?.message ?: return@let
-//						Text(text = message, color = Color.White)
-//					}
-//					else -> {
-//						PopularMovieItemContent(
-//							items = it,
-//							navigateToDetail = navigateToDetail
-//						)
-//					}
-//				}
-//			}
-//		}
 	}
 }
 
@@ -181,15 +113,12 @@ fun UpComingMovieItemContent(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PopularMovieItemContent(
-	items: LazyPagingItems<Popular>,
+	items: LazyPagingItems<Movie>,
 	navigateToDetail: (Int) -> Unit
 ) {
 	LazyVerticalGrid(
 		modifier = Modifier
-			.fillMaxWidth()
-			.heightIn(max = 35_000.dp)
-			.wrapContentHeight(),
-		userScrollEnabled = false,
+			.fillMaxWidth(),
 		columns = GridCells.Adaptive(140.dp),
 		content = {
 			items(items.itemCount) { idx ->

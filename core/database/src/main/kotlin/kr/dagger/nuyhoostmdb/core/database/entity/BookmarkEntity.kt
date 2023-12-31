@@ -3,12 +3,12 @@ package kr.dagger.nuyhoostmdb.core.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kr.dagger.nuyhoostmdb.core.model.Favorite
+import kr.dagger.nuyhoostmdb.core.model.Bookmark
 
 @Entity(
-	tableName = "favorite_movies"
+	tableName = "bookmark_movies"
 )
-data class FavoriteEntity(
+data class BookmarkEntity(
 	@ColumnInfo(name = "id")
 	@PrimaryKey
 	val id: Long,
@@ -20,7 +20,7 @@ data class FavoriteEntity(
 	val overView: String
 )
 
-fun FavoriteEntity.asExternalModel() = Favorite(
+fun BookmarkEntity.asExternalModel() = Bookmark(
 	id = id,
 	title = title,
 	posterPath = posterPath,

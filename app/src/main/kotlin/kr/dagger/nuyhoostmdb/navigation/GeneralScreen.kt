@@ -1,4 +1,4 @@
-package kr.dagger.nuyhoostmdb.navigation.model
+package kr.dagger.nuyhoostmdb.navigation
 
 sealed class GeneralScreen(
 	val route: String
