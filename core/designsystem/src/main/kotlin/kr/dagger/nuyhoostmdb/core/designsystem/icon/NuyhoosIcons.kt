@@ -4,6 +4,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.Bookmarks
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.ImageSearch
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Upcoming
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.ArrowBack
@@ -15,6 +19,8 @@ import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
 import androidx.compose.material.icons.rounded.Grid3x3
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.ImageSearch
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
@@ -36,11 +42,18 @@ object NuyhoosIcons {
 	val MoreVert = Icons.Default.MoreVert
 	val Person = Icons.Rounded.Person
 	val Search = Icons.Rounded.Search
+	val SearchOutline = Icons.Outlined.Search
 	val Settings = Icons.Rounded.Settings
+	val SettingsOutline = Icons.Outlined.Settings
 	val ShortText = Icons.Rounded.ShortText
 	val Upcoming = Icons.Rounded.Upcoming
 	val UpcomingBorder = Icons.Outlined.Upcoming
 	val ViewDay = Icons.Rounded.ViewDay
 	val Favorite = Icons.Rounded.Favorite
 	val FavoriteBorder = Icons.Rounded.FavoriteBorder
+	val Home = Icons.Rounded.Home
+	val HomeOutline = Icons.Outlined.Home
+	val ImageSearch = Icons.Rounded.ImageSearch
+	val ImageSearchOutline = Icons.Outlined.ImageSearch
+
 }

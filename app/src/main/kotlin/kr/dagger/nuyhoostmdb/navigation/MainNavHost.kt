@@ -5,18 +5,21 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import kr.dagger.nuyhoostmdb.feature.favorite.FavoriteScreen
+import androidx.navigation.navOptions
+import com.orhanobut.logger.Logger
+import kr.dagger.nuyhoostmdb.feature.bookmark.BookmarkRoute
+import kr.dagger.nuyhoostmdb.feature.bookmark.BookmarkScreen
 import kr.dagger.nuyhoostmdb.feature.home.HomeRoute
 import kr.dagger.nuyhoostmdb.feature.search.SearchScreen
 import kr.dagger.nuyhoostmdb.feature.setting.SettingScreen
+import kr.dagger.nuyhoostmdb.movie.MovieDetailRoute
 import kr.dagger.nuyhoostmdb.movie.MovieDetailScreen
-import kr.dagger.nuyhoostmdb.navigation.model.BottomBarScreen
-import kr.dagger.nuyhoostmdb.navigation.model.GeneralScreen
 
 @Composable
 fun MainNavHost(
@@ -29,33 +32,23 @@ fun MainNavHost(
 		startDestination = BottomBarScreen.Home.route,
 		modifier = modifier.padding(innerPadding)
 	) {
+
 		composable(BottomBarScreen.Home.route) {
 			HomeRoute(
 				modifier = modifier.fillMaxSize(),
 				navigateToDetail = { id ->
-					navController.navigate(GeneralScreen.DetailMovie.createRoute(id))
+					navController.navigate(
+						GeneralScreen.DetailMovie.createRoute(id)
+					)
 				}
 			)
 		}
 
-		composable(BottomBarScreen.Favorite.route) {
-			FavoriteScreen(
+		composable(BottomBarScreen.Bookmark.route) {
+			BookmarkRoute(
 				modifier = modifier.fillMaxSize(),
-				onAddFavoriteMovie = { },
-			) {
-			}
-		}
-
-		composable(
-			route = GeneralScreen.DetailMovie.route,
-			arguments = listOf(navArgument("id") { type = NavType.IntType })
-		) {
-			val id = it.arguments?.getInt("id") ?: -1
-			MovieDetailScreen(
-				modifier = modifier.fillMaxSize(),
-				id = id,
-				navigateBack = {
-					navController.navigateUp()
+				navigateToDetail = { id ->
+					navController.navigate(GeneralScreen.DetailMovie.createRoute(id))
 				}
 			)
 		}
@@ -70,6 +63,16 @@ fun MainNavHost(
 			SettingScreen(
 				modifier = modifier.fillMaxSize()
 			) {}
+		}
+
+		composable(
+			route = GeneralScreen.DetailMovie.route,
+			arguments = listOf(navArgument("id") { type = NavType.IntType })
+		) {
+			MovieDetailRoute(
+				modifier = modifier.fillMaxSize(),
+				navigateBack = { navController.navigateUp() }
+			)
 		}
 	}
 }
