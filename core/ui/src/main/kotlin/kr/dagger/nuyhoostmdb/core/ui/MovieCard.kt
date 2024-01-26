@@ -1,4 +1,4 @@
-package kr.dagger.nuyhoostmdb.feature.bookmark
+package kr.dagger.nuyhoostmdb.core.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -11,8 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,55 +19,33 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
-import kr.dagger.nuyhoostmdb.core.designsystem.component.NuyhoosIconToggleButton
-import kr.dagger.nuyhoostmdb.core.designsystem.icon.NuyhoosIcons
-import kr.dagger.nuyhoostmdb.core.model.Bookmark
+import kr.dagger.nuyhoostmdb.core.model.Movie
+import kr.dagger.nuyhoostmdb.core.utils.click.clickableSingle
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BookmarkCard(
+fun MovieCard(
 	modifier: Modifier = Modifier,
-	bookmark: Bookmark,
-	onClickRemove: (Long) -> Unit,
+	movie: Movie,
 	navigateToDetail: (Int) -> Unit,
 ) {
 	Card(
 		shape = RoundedCornerShape(8.dp),
 		modifier = modifier
 			.padding(8.dp)
-			.defaultMinSize(),
-		onClick = {
-			navigateToDetail(bookmark.id.toInt())
-		}
+			.defaultMinSize()
+			.clickableSingle {  navigateToDetail(movie.id.toInt()) },
 	) {
 		Column {
 			Box(
 				contentAlignment = Alignment.TopEnd
 			) {
 				PosterItem(
-					posterUrl = bookmark.posterPath,
-					itemName = bookmark.title
-				)
-				NuyhoosIconToggleButton(
-					isChecked = true,
-					onCheckedChange = {
-						onClickRemove(bookmark.id)
-					},
-					icon = {
-						Icon(
-							imageVector = NuyhoosIcons.BookmarkBorder,
-							contentDescription = null
-						)
-					},
-					checkedIcon = {
-						Icon(
-							imageVector = NuyhoosIcons.Bookmark,
-							contentDescription = null
-						)
-					},
+					posterUrl = movie.posterPath,
+					itemName = movie.title
 				)
 			}
 		}
@@ -94,6 +71,15 @@ private fun BoxScope.PosterItem(posterUrl: String?, itemName: String) {
 		ContentScale.FillBounds
 	}
 
+	if (painter.state is AsyncImagePainter.State.Loading) {
+		CircularProgressIndicator(
+			modifier = Modifier
+				.align(Alignment.Center)
+				.size(40.dp),
+			color = MaterialTheme.colorScheme.onBackground
+		)
+	}
+
 	Image(
 		painter = painter,
 		colorFilter = colorFilter,
@@ -102,5 +88,19 @@ private fun BoxScope.PosterItem(posterUrl: String?, itemName: String) {
 		modifier = Modifier
 			.size(200.dp)
 			.align(Alignment.Center)
+	)
+}
+
+@Preview
+@Composable
+fun MovieCardPreview() {
+	MovieCard(
+		movie = Movie(
+			id = 11,
+			title = "Migration",
+			posterPath = "/ptz5ETMxDoRRiE69BVuIxJzyTEO.jpg",
+			overView = "",
+		),
+		navigateToDetail = {}
 	)
 }

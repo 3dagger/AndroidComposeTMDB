@@ -5,6 +5,7 @@ plugins {
 	alias(libs.plugins.nuyhoos.android.application.compose)
 	alias(libs.plugins.nuyhoos.android.hilt)
 	alias(libs.plugins.nuyhoos.android.room)
+	id("com.google.android.gms.oss-licenses-plugin")
 }
 
 fun getLocalProperties(propName: String): String {
@@ -51,6 +52,7 @@ dependencies {
 	implementation(projects.core.domain)
 	implementation(projects.core.designsystem)
 	implementation(projects.core.ui)
+	implementation(projects.core.utils)
 
 	implementation(projects.feature.home)
 	implementation(projects.feature.bookmark)
@@ -58,6 +60,7 @@ dependencies {
 	implementation(projects.feature.setting)
 	implementation(projects.feature.movie)
 
+	implementation(libs.androidx.appcompat)
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.activity.compose)
 	implementation(libs.androidx.compose.ui.tooling)

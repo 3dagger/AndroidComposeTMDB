@@ -2,7 +2,6 @@ package kr.dagger.nuyhoostmdb.feature.home
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,6 +21,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import kr.dagger.nuyhoostmdb.core.model.Movie
+import kr.dagger.nuyhoostmdb.core.ui.MovieCard
 import kr.dagger.nuyhoostmdb.core.ui.Progress
 
 @Composable
@@ -49,9 +48,7 @@ internal fun HomeScreen(
 	navigateToDetail: (Int) -> Unit,
 ) {
 	Box(
-		modifier = modifier
-			.fillMaxSize()
-			.background(MaterialTheme.colorScheme.background)
+		modifier = modifier.fillMaxSize()
 	) {
 		Column {
 			pagingItems.let {

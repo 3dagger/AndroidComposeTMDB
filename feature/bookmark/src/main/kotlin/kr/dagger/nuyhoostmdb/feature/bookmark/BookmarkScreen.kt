@@ -2,7 +2,6 @@ package kr.dagger.nuyhoostmdb.feature.bookmark
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,9 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kr.dagger.nuyhoostmdb.core.model.Bookmark
+import kr.dagger.nuyhoostmdb.core.ui.BookmarkCard
 import kr.dagger.nuyhoostmdb.core.ui.Progress
 
 @Composable
@@ -47,9 +48,7 @@ fun BookmarkScreen(
 	navigateToDetail: (Int) -> Unit,
 ) {
 	Box(
-		modifier = modifier
-			.fillMaxSize()
-			.background(MaterialTheme.colorScheme.background)
+		modifier = modifier.fillMaxSize()
 	) {
 		Column {
 			when (bookmarkState) {
@@ -115,7 +114,7 @@ private fun EmptyBookmarks(
 		Text(
 			text = "Empty bookmarks.",
 			style = MaterialTheme.typography.bodyMedium,
-//			color = Mater
+			fontSize = 25.sp
 		)
 	}
 }

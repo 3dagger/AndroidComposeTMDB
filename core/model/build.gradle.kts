@@ -5,6 +5,3 @@ plugins {
 android {
 	namespace = "kr.dagger.nuyhoostmdb.core.model"
 }
-
-dependencies {
-}

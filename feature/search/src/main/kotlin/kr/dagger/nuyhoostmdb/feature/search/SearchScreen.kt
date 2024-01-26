@@ -23,9 +23,7 @@ fun SearchScreen(
 	navigateToDetail: (Int) -> Unit,
 ) {
 	Box(
-		modifier = modifier
-			.fillMaxSize()
-			.background(MaterialTheme.colorScheme.background)
+		modifier = modifier.fillMaxSize()
 	) {
 		LazyRowDemo()
 	}

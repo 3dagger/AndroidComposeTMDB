@@ -66,9 +66,7 @@ fun MovieDetailScreen(
 ) {
 	val state = rememberLazyListState()
 	Box(
-		modifier = modifier
-			.fillMaxSize()
-			.background(MaterialTheme.colorScheme.background)
+		modifier = modifier.fillMaxSize()
 	) {
 		LazyColumn(
 			state = state,

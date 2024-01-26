@@ -35,7 +35,7 @@ fun NuyhoosApp(
 
 	Scaffold(
 		modifier = modifier,
-		containerColor = MaterialTheme.colorScheme.onBackground,
+		containerColor = MaterialTheme.colorScheme.background,
 		bottomBar = {
 			if (isBottomScreen(currentRoute)) {
 				NuyhoosBottomBar(navController = navController)
