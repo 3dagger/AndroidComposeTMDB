@@ -5,21 +5,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import androidx.navigation.navOptions
-import com.orhanobut.logger.Logger
 import kr.dagger.nuyhoostmdb.feature.bookmark.BookmarkRoute
-import kr.dagger.nuyhoostmdb.feature.bookmark.BookmarkScreen
 import kr.dagger.nuyhoostmdb.feature.home.HomeRoute
 import kr.dagger.nuyhoostmdb.feature.search.SearchScreen
 import kr.dagger.nuyhoostmdb.feature.setting.SettingScreen
 import kr.dagger.nuyhoostmdb.movie.MovieDetailRoute
-import kr.dagger.nuyhoostmdb.movie.MovieDetailScreen
 
 @Composable
 fun MainNavHost(

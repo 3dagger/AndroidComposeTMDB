@@ -19,13 +19,13 @@ class BookmarkRepositoryImpl @Inject constructor(
 			}
 	}
 
-	override suspend fun insertBookmark(bookmark: Bookmark) {
+	override suspend fun insertBookmark(bookmarkEntity: Bookmark) {
 		return bookmarkDao.insertBookmark(
 			bookmarkEntity = BookmarkEntity(
-				id = bookmark.id,
-				title = bookmark.title,
-				posterPath = bookmark.posterPath,
-				overView = bookmark.overView
+				id = bookmarkEntity.id,
+				title = bookmarkEntity.title,
+				posterPath = bookmarkEntity.posterPath,
+				overView = bookmarkEntity.overView
 			)
 		)
 	}

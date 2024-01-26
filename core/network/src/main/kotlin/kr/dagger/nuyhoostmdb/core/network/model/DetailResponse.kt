@@ -28,7 +28,8 @@ data class DetailResponse(
 	@SerializedName("vote_average")
 	val voteAverage: Double? = null,
 	@SerializedName("vote_count")
-	val voteCount:Int? = null,
+	val voteCount: Int? = null,
+	var isBookmark: Boolean? = null
 ) {
 	data class GenreResponse(
 		@SerializedName("id")

@@ -26,8 +26,8 @@ fun NuyhoosIconToggleButton(
 		modifier = modifier,
 		enabled = isEnabled,
 		colors = IconButtonDefaults.iconToggleButtonColors(
-			checkedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-			checkedContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+//			checkedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+//			checkedContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
 			disabledContainerColor = if (isChecked) {
 				MaterialTheme.colorScheme.onBackground.copy(alpha = 0.3F)
 			} else {

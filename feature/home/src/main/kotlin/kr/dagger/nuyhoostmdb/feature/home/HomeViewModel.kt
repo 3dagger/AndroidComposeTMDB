@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
-import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetNowPlayingMoviesUseCase
 import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetPopularMoviePagingUseCase
 import kr.dagger.nuyhoostmdb.core.domain.usecase.movie.GetUpComingMoviesUseCase
 import kr.dagger.nuyhoostmdb.core.model.Movie
@@ -22,9 +21,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
 	getPopularMoviePagingUseCase: GetPopularMoviePagingUseCase,
 	getUpComingMoviesUseCase: GetUpComingMoviesUseCase,
-	private val getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase
 ) : ViewModel() {
-
 
 	val upComingStateFlow: StateFlow<UpComingUiState> =
 		getUpComingMoviesUseCase.execute(Unit)

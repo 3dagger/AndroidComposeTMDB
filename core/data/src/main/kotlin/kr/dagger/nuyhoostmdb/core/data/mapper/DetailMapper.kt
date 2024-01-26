@@ -24,5 +24,6 @@ object DetailMapper {
 			status = detailResponse.status ?: "",
 			voteAverage = detailResponse.voteAverage ?: 0.0,
 			voteCount = detailResponse.voteCount ?: 0,
+			isBookmarked = detailResponse.isBookmark ?: false
 		)
 }

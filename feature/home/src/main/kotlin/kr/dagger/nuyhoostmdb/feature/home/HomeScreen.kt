@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.MaterialTheme
@@ -25,7 +23,6 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import kr.dagger.nuyhoostmdb.core.model.Movie
-import kr.dagger.nuyhoostmdb.core.model.UpComing
 import kr.dagger.nuyhoostmdb.core.ui.Progress
 
 @Composable
@@ -59,7 +56,7 @@ internal fun HomeScreen(
 		Column {
 			pagingItems.let {
 				when (it.loadState.refresh) {
-					is LoadState.Loading -> Progress()
+					is LoadState.Loading -> { Progress() }
 					is LoadState.Error -> {
 						val message =
 							(it.loadState.refresh as? LoadState.Error)?.error?.message ?: return@let
@@ -75,39 +72,6 @@ internal fun HomeScreen(
 			}
 		}
 	}
-}
-
-@OptIn(ExperimentalFoundationApi::class)
-@Composable
-fun UpComingMovieItemContent(
-	items: List<UpComing>,
-	navigateToDetail: (Int) -> Unit
-) {
-	LazyRow(
-		modifier = Modifier
-			.fillMaxWidth()
-			.wrapContentHeight(),
-		contentPadding = PaddingValues(8.dp),
-		content = {
-			items(
-				count = items.size,
-				itemContent = { idx ->
-					MovieCard(
-						modifier = Modifier
-							.fillMaxWidth()
-							.animateItemPlacement(tween(durationMillis = 100)),
-						movie = Movie(
-							id = items[idx].id,
-							title = items[idx].title,
-							posterPath = items[idx].posterPath,
-							overView = items[idx].overView,
-						),
-						navigateToDetail = navigateToDetail,
-					)
-				},
-			)
-		}
-	)
 }
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -138,34 +102,3 @@ fun PopularMovieItemContent(
 		}, contentPadding = PaddingValues(8.dp)
 	)
 }
-
-//@OptIn(ExperimentalFoundationApi::class)
-//@Composable
-//fun PopularMovieItemContent(
-//	items: LazyPagingItems<Popular>,
-//	navigateToDetail: (Int) -> Unit
-//) {
-//	Column(
-//		modifier = Modifier.fillMaxSize()
-//	) {
-//		LazyVerticalGrid(
-//			columns = GridCells.Adaptive(140.dp),
-//			content = {
-//				items(items.itemCount) { idx ->
-//					MovieCard(
-//						modifier = Modifier
-//							.fillMaxWidth()
-//							.animateItemPlacement(tween(durationMillis = 100)),
-//						movie = Movie(
-//							id = items[idx]?.id ?: 0,
-//							title = items[idx]?.title ?: "",
-//							posterPath = items[idx]?.posterPath ?: "",
-//							overView = items[idx]?.overView ?: "",
-//						),
-//						navigateToDetail = navigateToDetail,
-//					)
-//				}
-//			}, contentPadding = PaddingValues(8.dp)
-//		)
-//	}
-//}

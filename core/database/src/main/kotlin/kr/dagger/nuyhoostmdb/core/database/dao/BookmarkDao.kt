@@ -11,9 +11,6 @@ import kr.dagger.nuyhoostmdb.core.database.entity.BookmarkEntity
 interface BookmarkDao {
 
 	@Query("SELECT * FROM bookmark_movies ORDER BY id")
-	fun getFavoriteMovies(): List<BookmarkEntity>
-
-	@Query("SELECT * FROM bookmark_movies ORDER BY id")
 	fun getBookmarks(): Flow<List<BookmarkEntity>>
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -5,7 +5,7 @@ import kr.dagger.nuyhoostmdb.core.domain.usecase.base.BaseUseCaseSuspend
 import kr.dagger.nuyhoostmdb.core.model.Bookmark
 import javax.inject.Inject
 
-class InsertBookmarkMovieUseCase @Inject constructor(
+class InsertBookmarkUseCase @Inject constructor(
 	private val bookmarkRepository: BookmarkRepository
 ) : BaseUseCaseSuspend<Bookmark, Unit>() {
 

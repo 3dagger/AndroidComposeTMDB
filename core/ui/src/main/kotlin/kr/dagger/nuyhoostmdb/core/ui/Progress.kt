@@ -26,7 +26,8 @@ fun Progress() {
 		modifier = Modifier
 			.fillMaxSize()
 			.background(MaterialTheme.colorScheme.surface),
-		verticalArrangement = Arrangement.Center
+		verticalArrangement = Arrangement.Center,
+		horizontalAlignment = Alignment.CenterHorizontally,
 	) {
 		CircularProgressIndicator(
 			modifier = Modifier

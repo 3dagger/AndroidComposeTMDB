@@ -1,10 +1,16 @@
 package kr.dagger.nuyhoostmdb.movie
 
-sealed interface MovieUiState<out T : Any?> {
+import kr.dagger.nuyhoostmdb.core.model.Detail
 
-	data object Loading : MovieUiState<Nothing>
+sealed interface MovieUiState {
 
-	data class Success<out T : Any>(val data: T) : MovieUiState<T>
+	data object Loading: MovieUiState
 
-	data class Error(val errorMessage: String) : MovieUiState<Nothing>
+	data class Fail(
+		val errorMessage: String
+	) : MovieUiState
+
+	data class Success(
+		val data: Detail
+	) : MovieUiState
 }

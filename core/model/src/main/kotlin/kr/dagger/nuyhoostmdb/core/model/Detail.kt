@@ -14,6 +14,7 @@ data class Detail(
 	val status: String,
 	val voteAverage: Double,
 	val voteCount: Int,
+	var isBookmarked: Boolean,
 ) {
 	data class Genre(
 		val id: Long,

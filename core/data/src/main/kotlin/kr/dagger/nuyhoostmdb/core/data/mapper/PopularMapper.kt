@@ -7,9 +7,9 @@ object PopularMapper {
 
 	fun mapFromPopularResponseToModel(popularItemResponse: PopularItemResponse) =
 		Movie(
-			popularItemResponse.id ?: 0,
-			popularItemResponse.title ?: "",
-			popularItemResponse.posterPath ?: "",
-			popularItemResponse.overView ?: ""
+			id = popularItemResponse.id ?: 0,
+			title = popularItemResponse.title ?: "",
+			posterPath = popularItemResponse.posterPath ?: "",
+			overView = popularItemResponse.overView ?: "",
 		)
 }
