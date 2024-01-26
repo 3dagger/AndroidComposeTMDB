@@ -13,7 +13,7 @@ import androidx.navigation.navArgument
 import kr.dagger.nuyhoostmdb.feature.bookmark.BookmarkRoute
 import kr.dagger.nuyhoostmdb.feature.home.HomeRoute
 import kr.dagger.nuyhoostmdb.feature.search.SearchScreen
-import kr.dagger.nuyhoostmdb.feature.setting.SettingScreen
+import kr.dagger.nuyhoostmdb.feature.setting.SettingScreenRoute
 import kr.dagger.nuyhoostmdb.movie.MovieDetailRoute
 
 @Composable
@@ -55,7 +55,7 @@ fun MainNavHost(
 		}
 
 		composable(BottomBarScreen.Setting.route) {
-			SettingScreen(
+			SettingScreenRoute(
 				modifier = modifier.fillMaxSize()
 			) {}
 		}
