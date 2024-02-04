@@ -53,7 +53,9 @@ dependencies {
 	implementation(projects.core.designsystem)
 	implementation(projects.core.ui)
 	implementation(projects.core.utils)
+	implementation(projects.core.navigation)
 
+	implementation(projects.feature.splash)
 	implementation(projects.feature.home)
 	implementation(projects.feature.bookmark)
 	implementation(projects.feature.search)
@@ -64,8 +66,8 @@ dependencies {
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.activity.compose)
 	implementation(libs.androidx.compose.ui.tooling)
-
 	implementation(libs.androidx.compose.material3)
+	implementation(libs.androidx.core.splashscreen)
 
 	implementation(libs.androidx.navigation.compose)
 	implementation(libs.androidx.hilt.navigation.compose)

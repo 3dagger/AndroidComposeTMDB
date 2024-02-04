@@ -1,7 +1,6 @@
 plugins {
 	alias(libs.plugins.nuyhoos.android.library)
 	alias(libs.plugins.nuyhoos.android.hilt)
-//	id("kotlinx-serialization")
 }
 
 android {

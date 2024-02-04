@@ -4,6 +4,7 @@ androidTools = "31.1.3"
 androidxActivity = "1.8.0"
 androidxAppCompat = "1.6.1"
 androidxCore = "1.9.0"
+androidxCoreSplashscreen = "1.0.1"
 androidxComposeBom = "2023.10.01"
 androidxLifecycle = "2.6.1"
 androidxNavigation = "2.5.3"
@@ -44,6 +45,7 @@ uiTooling = "1.5.4"
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
+androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidxCoreSplashscreen" }
 androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
@@ -118,5 +120,3 @@ nuyhoos-android-feature = { id = "nuyhoos.android.feature", version = "unspecifi
 nuyhoos-android-room = { id = "nuyhoos.android.room", version = "unspecified" }
 nuyhoos-android-library = { id = "nuyhoos.android.library", version = "unspecified" }
 nuyhoos-android-library-compose = { id = "nuyhoos.android.library.compose", version = "unspecified" }
-nuyhoos-jvm-library = { id = "nuyhoos.jvm.library", version = "unspecified" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin19102" }
