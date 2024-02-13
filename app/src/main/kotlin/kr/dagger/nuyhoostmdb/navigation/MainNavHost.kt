@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import kr.dagger.nuyhoostmdb.feature.bookmark.BookmarkRoute
 import kr.dagger.nuyhoostmdb.feature.home.HomeRoute
+import kr.dagger.nuyhoostmdb.feature.search.SearchRoute
 import kr.dagger.nuyhoostmdb.feature.search.SearchScreen
 import kr.dagger.nuyhoostmdb.feature.setting.SettingScreenRoute
 import kr.dagger.nuyhoostmdb.movie.MovieDetailRoute
@@ -43,15 +44,22 @@ fun MainNavHost(
 			BookmarkRoute(
 				modifier = modifier.fillMaxSize(),
 				navigateToDetail = { id ->
-					navController.navigate(GeneralScreen.DetailMovie.createRoute(id))
+					navController.navigate(
+						GeneralScreen.DetailMovie.createRoute(id)
+					)
 				}
 			)
 		}
 
 		composable(BottomBarScreen.Search.route) {
-			SearchScreen(
+			SearchRoute(
 				modifier = modifier.fillMaxSize(),
-			) {}
+				navigateToDetail = { id ->
+					navController.navigate(
+						GeneralScreen.DetailMovie.createRoute(id)
+					)
+				}
+			)
 		}
 
 		composable(BottomBarScreen.Setting.route) {

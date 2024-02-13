@@ -1,10 +1,9 @@
 package kr.dagger.nuyhoostmdb.core.network.service
 
 import kr.dagger.nuyhoostmdb.core.network.model.DetailResponse
-import kr.dagger.nuyhoostmdb.core.network.model.NowPlayingItemResponse
 import kr.dagger.nuyhoostmdb.core.network.model.NowPlayingResponse
 import kr.dagger.nuyhoostmdb.core.network.model.PopularResponse
-import kr.dagger.nuyhoostmdb.core.network.model.UpComingItemResponse
+import kr.dagger.nuyhoostmdb.core.network.model.SearchResponse
 import kr.dagger.nuyhoostmdb.core.network.model.UpComingResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -39,4 +38,10 @@ interface MovieService {
 		@Query("language") language: String = "ko-KR",
 		@Query("region") region: String = "KR",
 	): DetailResponse
+
+	@GET("/3/search/movie")
+	suspend fun getMovieSearch(
+		@Query("query") query: String,
+		@Query("language") language: String = "ko-KR",
+	): SearchResponse
 }

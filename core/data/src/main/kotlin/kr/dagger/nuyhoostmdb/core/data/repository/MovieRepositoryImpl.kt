@@ -1,22 +1,17 @@
 package kr.dagger.nuyhoostmdb.core.data.repository
 
-import com.orhanobut.logger.Logger
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.forEach
-import kotlinx.coroutines.flow.map
 import kr.dagger.nuyhoostmdb.core.data.mapper.DetailMapper
 import kr.dagger.nuyhoostmdb.core.data.mapper.NowPlayingMapper
+import kr.dagger.nuyhoostmdb.core.data.mapper.SearchMapper
 import kr.dagger.nuyhoostmdb.core.data.mapper.UpComingMapper
-import kr.dagger.nuyhoostmdb.core.database.AppDatabase
 import kr.dagger.nuyhoostmdb.core.database.dao.BookmarkDao
 import kr.dagger.nuyhoostmdb.core.model.Detail
 import kr.dagger.nuyhoostmdb.core.model.NowPlaying
+import kr.dagger.nuyhoostmdb.core.model.Search
 import kr.dagger.nuyhoostmdb.core.model.UpComing
-import kr.dagger.nuyhoostmdb.core.network.model.DetailResponse
 import kr.dagger.nuyhoostmdb.core.network.service.MovieService
-import java.util.PrimitiveIterator
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
@@ -70,6 +65,16 @@ class MovieRepositoryImpl @Inject constructor(
 					}
 				)
 			}
+		}
+	}
+
+	override fun getMovieSearch(query: String): Flow<Search> {
+		return flow {
+			emit(
+				SearchMapper.mapFromSearchResponseToModel(
+					movieService.getMovieSearch(query = query)
+				)
+			)
 		}
 	}
 }
