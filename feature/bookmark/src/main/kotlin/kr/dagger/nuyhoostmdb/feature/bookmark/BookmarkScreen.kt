@@ -52,7 +52,7 @@ fun BookmarkScreen(
 	) {
 		Column {
 			when (bookmarkState) {
-				BookmarkUiState.Loading -> Progress()
+				is BookmarkUiState.Loading -> Progress()
 				is BookmarkUiState.Success -> {
 					if (bookmarkState.bookmarks.isNotEmpty()) {
 						BookmarkItemContent(
