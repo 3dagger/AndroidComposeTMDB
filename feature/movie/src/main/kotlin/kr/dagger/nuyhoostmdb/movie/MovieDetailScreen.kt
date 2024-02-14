@@ -1,7 +1,6 @@
 package kr.dagger.nuyhoostmdb.movie
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -14,8 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -272,7 +269,7 @@ private fun BoxScope.BackdropPosterItem(
 ) {
 	val painter = rememberAsyncImagePainter(
 		model = "https://image.tmdb.org/t/p/original/$posterUrl",
-		error = rememberVectorPainter(image = Icons.Filled.Edit),
+		error = rememberVectorPainter(image = NuyhoosIcons.Person),
 	)
 
 	val colorFilter = when (painter.state) {
