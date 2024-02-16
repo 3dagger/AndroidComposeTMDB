@@ -8,42 +8,8 @@ plugins {
 	id("com.google.android.gms.oss-licenses-plugin")
 }
 
-fun getLocalProperties(propName: String): String {
-	return gradleLocalProperties(rootDir).getProperty(propName)
-}
-
 android {
 	namespace = "kr.dagger.nuyhoostmdb"
-
-	defaultConfig {
-		applicationId = "kr.dagger.nuyhoostmdb"
-		versionCode = 1
-		versionName = "1.0"
-
-		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-		vectorDrawables {
-			useSupportLibrary = true
-		}
-		buildConfigField("String", "TMDB_KEY", getLocalProperties("tmdb_key"))
-	}
-
-	buildTypes {
-		release {
-			isMinifyEnabled = false
-			proguardFiles(
-				getDefaultProguardFile("proguard-android-optimize.txt"),
-				"proguard-rules.pro"
-			)
-		}
-	}
-	buildFeatures {
-		buildConfig = true
-	}
-	packaging {
-		resources {
-			excludes += "/META-INF/{AL2.0,LGPL2.1}"
-		}
-	}
 }
 
 dependencies {

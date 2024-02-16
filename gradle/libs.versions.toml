@@ -14,32 +14,25 @@ androidxComposeMaterial = "1.0.1"
 androidxComposeCompiler = "1.5.3"
 ksp = "1.9.10-1.0.13"
 kotlin = "1.9.10"
-
 hilt = "2.48.1"
 hiltExt = "1.1.0"
-
 gmsPlugin = "4.4.0"
 googleOss = "17.0.1"
 googleOssPlugin = "0.10.4"
-
+secrets = "2.0.1"
 kotlinxCoroutines = "1.7.2"
 retrofit = "2.9.0"
 okhttp = "4.12.0"
 room = "2.6.0"
-
 accompanistSystemuicontroller = "0.32.0"
-
 coil = "2.4.0"
 logger = "2.2.0"
-
 androidxEspresso = "3.5.1"
 androidxTestExt = "1.1.5"
 junit4 = "4.13.2"
-kotlin1910 = "1.9.10"
 junit = "1.1.5"
 appcompat = "1.6.1"
 material = "1.9.0"
-kotlin19102 = "1.9.10"
 uiTooling = "1.5.4"
 
 [libraries]
@@ -111,6 +104,7 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
 
 # Plugins defined by this project
 nuyhoos-android-application = { id = "nuyhoos.android.application", version = "unspecified" }

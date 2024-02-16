@@ -1,11 +1,8 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.api.variant.ApplicationAndroidComponentsExtension
-import com.android.build.gradle.BaseExtension
 import kr.dagger.nuyhoostmdb.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.getByType
 class AndroidApplicationConventionPlugin : Plugin<Project> {
 
 	override fun apply(target: Project) {
@@ -17,7 +14,36 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 
 			extensions.configure<ApplicationExtension> {
 				configureKotlinAndroid(this)
-				defaultConfig.targetSdk = 34
+
+				defaultConfig {
+					applicationId = "kr.dagger.nuyhoostmdb"
+					targetSdk = 34
+					versionCode = 1
+					versionName = "1.0"
+
+					testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+					vectorDrawables {
+						useSupportLibrary = true
+					}
+				}
+
+				buildTypes {
+					release {
+						isMinifyEnabled = false
+						proguardFiles(
+							getDefaultProguardFile("proguard-android-optimize.txt"),
+							"proguard-rules.pro"
+						)
+					}
+				}
+				buildFeatures {
+					buildConfig = true
+				}
+				packaging {
+					resources {
+						excludes += "/META-INF/{AL2.0,LGPL2.1}"
+					}
+				}
 			}
 		}
 	}

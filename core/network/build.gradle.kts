@@ -1,6 +1,7 @@
 plugins {
 	alias(libs.plugins.nuyhoos.android.library)
 	alias(libs.plugins.nuyhoos.android.hilt)
+	alias(libs.plugins.secrets)
 }
 
 android {
@@ -9,6 +10,10 @@ android {
 	buildFeatures {
 		buildConfig = true
 	}
+}
+
+secrets {
+	defaultPropertiesFileName = "secrets.defaults.properties"
 }
 
 dependencies {
