@@ -35,6 +35,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.orhanobut.logger.Logger
 import kr.dagger.nuyhoostmdb.core.designsystem.icon.NuyhoosIcons
 import kr.dagger.nuyhoostmdb.core.model.Search
+import kr.dagger.nuyhoostmdb.core.ui.ErrorMessage
 import kr.dagger.nuyhoostmdb.core.ui.Progress
 
 @Composable
@@ -75,8 +76,14 @@ fun SearchScreen(
 				is SearchResultUiState.Loading -> {
 					Progress()
 				}
-				is SearchResultUiState.Empty, SearchResultUiState.Fail -> {
+				is SearchResultUiState.Empty -> {
 					EmptySearches(modifier = modifier)
+				}
+				is SearchResultUiState.Fail -> {
+					ErrorMessage(
+						modifier = modifier,
+						message = searchResultUiState.message
+					)
 				}
 				is SearchResultUiState.Success -> {
 					SearchContent(

@@ -9,11 +9,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -21,6 +19,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import kr.dagger.nuyhoostmdb.core.model.Movie
+import kr.dagger.nuyhoostmdb.core.ui.ErrorMessage
 import kr.dagger.nuyhoostmdb.core.ui.MovieCard
 import kr.dagger.nuyhoostmdb.core.ui.Progress
 
@@ -57,7 +56,10 @@ internal fun HomeScreen(
 					is LoadState.Error -> {
 						val message =
 							(it.loadState.refresh as? LoadState.Error)?.error?.message ?: return@let
-						Text(text = message, color = Color.White)
+						ErrorMessage(
+							modifier = modifier,
+							message = message
+						)
 					}
 					else -> {
 						PopularMovieItemContent(

@@ -8,7 +8,9 @@ sealed interface SearchResultUiState {
 
 	data object Empty : SearchResultUiState
 
-	data object Fail : SearchResultUiState
+	data class Fail(
+		val message: String
+	) : SearchResultUiState
 
 	data class Success(
 		val data: Search

@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
@@ -27,6 +28,7 @@ class HomeViewModel @Inject constructor(
 		getUpComingMoviesUseCase.execute(Unit)
 			.map<List<UpComing>, UpComingUiState>(UpComingUiState::Success)
 			.onStart { emit(UpComingUiState.Loading) }
+			.catch { emit(UpComingUiState.Fail(errorMessage = it.message.toString())) }
 			.stateIn(
 				scope = viewModelScope,
 				started = SharingStarted.WhileSubscribed(5_000),

@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
@@ -33,6 +34,7 @@ class SearchViewModel @Inject constructor(
 				} else {
 					getMovieSearchUseCase.execute(query)
 						.map<Search, SearchResultUiState>(SearchResultUiState::Success)
+						.catch { emit(SearchResultUiState.Fail(message = it.message.toString())) }
 						.onStart { emit(SearchResultUiState.Loading) }
 				}
 		}.stateIn(

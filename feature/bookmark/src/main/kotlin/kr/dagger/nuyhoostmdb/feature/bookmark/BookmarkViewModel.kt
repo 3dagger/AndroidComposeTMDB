@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
@@ -26,6 +27,7 @@ class BookmarkViewModel @Inject constructor(
 		getBookmarksUseCase.execute(Unit)
 			.map<List<Bookmark>, BookmarkUiState>(BookmarkUiState::Success)
 			.onStart { emit(BookmarkUiState.Loading) }
+			.catch { emit(BookmarkUiState.Fail(it.message.toString())) }
 			.stateIn(
 				scope = viewModelScope,
 				started = SharingStarted.WhileSubscribed(5_000),
