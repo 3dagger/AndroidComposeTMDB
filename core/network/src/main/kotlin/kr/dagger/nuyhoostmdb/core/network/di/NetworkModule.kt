@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kr.dagger.nuyhoostmdb.core.network.BuildConfig
 import kr.dagger.nuyhoostmdb.core.network.interceptor.HttpRequestInterceptor
 import kr.dagger.nuyhoostmdb.core.network.service.MovieService
 import okhttp3.OkHttpClient
@@ -27,7 +28,13 @@ object NetworkModule {
 	@Singleton
 	fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
 		return HttpLoggingInterceptor()
-			.setLevel(HttpLoggingInterceptor.Level.BODY)
+			.apply {
+				level = if (BuildConfig.DEBUG) {
+					HttpLoggingInterceptor.Level.BODY
+				} else {
+					HttpLoggingInterceptor.Level.NONE
+				}
+			}
 	}
 
 	@Provides
