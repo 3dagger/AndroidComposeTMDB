@@ -35,4 +35,4 @@ include(":core:model")
 include(":core:navigation")
 include(":core:ui")
 include(":core:utils")
-
+include(":core:testing")

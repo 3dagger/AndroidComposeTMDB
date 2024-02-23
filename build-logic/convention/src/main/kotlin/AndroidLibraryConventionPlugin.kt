@@ -20,19 +20,11 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 			extensions.configure<LibraryExtension> {
 				configureKotlinAndroid(this)
 				defaultConfig.targetSdk = 34
-//				configureFlavors(this)
-//				configureGradleManagedDevices(this)
 			}
-//			extensions.configure<LibraryAndroidComponentsExtension> {
-//				configurePrintApksTask(this)
-//				disableUnnecessaryAndroidTests(target)
-//			}
 			dependencies {
 				add("implementation", libs.findLibrary("logger").get())
 				add("testImplementation", kotlin("test"))
-//				add("testImplementation", project(":core:testing"))
 				add("androidTestImplementation", kotlin("test"))
-//				add("androidTestImplementation", project(":core:testing"))
 			}
 		}
 	}
