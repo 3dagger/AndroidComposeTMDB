@@ -9,11 +9,12 @@ android {
 
 	defaultConfig {
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-		consumerProguardFiles("consumer-rules.pro")
 	}
 }
 
 dependencies {
 	implementation(projects.core.model)
 	implementation(libs.kotlinx.coroutines.android)
+
+	androidTestImplementation(projects.core.testing)
 }
