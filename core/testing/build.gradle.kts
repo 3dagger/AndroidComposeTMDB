@@ -9,10 +9,9 @@ android {
 dependencies {
 	api(kotlin("test"))
 	api(libs.kotlinx.coroutines.test)
+	api(projects.core.data)
+	api(projects.core.model)
 
 	api(libs.androidx.test.ext)
 	api(libs.androidx.test.rules)
-//	implementation(libs.androidx.test.ext)
-
-//	implementation(libs.androidx.test.core)
 }
