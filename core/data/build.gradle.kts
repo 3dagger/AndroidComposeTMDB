@@ -25,4 +25,6 @@ dependencies {
 	implementation(libs.androidx.paging.compose)
 	implementation(libs.retrofit.core)
 	implementation(libs.retrofit.gson)
+
+	testImplementation(projects.core.testing)
 }
