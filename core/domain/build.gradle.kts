@@ -15,4 +15,6 @@ dependencies {
 	implementation(libs.kotlinx.coroutines.android)
 	implementation(libs.androidx.paging.runtime)
 	ksp(libs.hilt.compiler)
+
+	testImplementation(projects.core.testing)
 }
