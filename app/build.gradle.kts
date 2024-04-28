@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
-
 plugins {
 	alias(libs.plugins.nuyhoos.android.application)
 	alias(libs.plugins.nuyhoos.android.application.compose)

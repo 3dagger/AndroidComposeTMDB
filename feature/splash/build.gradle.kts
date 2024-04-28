@@ -8,8 +8,6 @@ android {
 }
 
 dependencies {
-	implementation(projects.core.designsystem)
-
 	implementation(libs.accompanist.systemuicontroller)
 	implementation(libs.androidx.core.splashscreen)
 }
